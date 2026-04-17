@@ -1,20 +1,23 @@
 package com.example.exoplanetdashboard.model
 
 data class ImageResponse(
-    val collection : Imagecollection
-)
-data class Imagecollection(
-    val items : List<ImageItems>
+    val collection: ImageCollection
 )
 
-data class ImageItems(
-    val data: List<Dataitems>,
-    val links: List<Linkitems>
+data class ImageCollection(
+    val items: List<ImageItem>
 )
-data class Dataitems(
-    val desc: String,
+
+data class ImageItem(
+    val data: List<DataItem>,
+    val links: List<LinkItem>
+)
+
+data class DataItem(
     val title: String,
+    val description: String? = null
 )
-data class  Linkitems  (
-    val href: List<String>
+
+data class LinkItem(
+    val href: String
 )

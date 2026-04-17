@@ -1,27 +1,29 @@
 package com.example.exoplanetdashboard.navigation
-import androidx.navigation.compose.rememberNavController
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.compose.ui.Modifier
-import com.example.exoplanetdashboard.screens.Home
-import com.example.exoplanetdashboard.screens.Exoplanets
-import com.example.exoplanetdashboard.screens.Galaxy
-import com.example.exoplanetdashboard.screens.Nebula
-import com.example.exoplanetdashboard.screens.Systems
-import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-
-
+import com.example.exoplanetdashboard.screens.*
+import com.example.exoplanetdashboard.ui.viewmodel.ImageViewModel
 
 @Composable
-fun AppNavigation(modifier: Modifier = Modifier, navController : NavHostController) {
-    //val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") { Home() }
-        composable("exoplanets") { Exoplanets() }
-        composable("nebula") { Nebula() }
-        composable("systems") { Systems() }
-        composable("galaxy") { Galaxy() }
+fun AppNavigation(
+    navController: NavHostController,
+    viewModel: ImageViewModel,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = "home",
+        modifier = modifier
+    ) {
+
+        composable("home") { Home(viewModel) }
+        composable("exoplanets") { Exoplanets(viewModel) }
+        composable("nebula") { Nebula(viewModel) }
+        composable("galaxy") { Galaxy(viewModel) }
+        composable("systems") { Systems(viewModel) }
     }
 }
-
